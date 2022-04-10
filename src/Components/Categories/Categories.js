@@ -1,7 +1,12 @@
 import DirectoryItem from "../DirectoryItem/DirectoryItem";
 import "./Categories.scss";
+import { useContext, useEffect, useState } from "react";
+import { CategoriesContext } from "../../Context/CategoriesContext";
 
 const Categories = () => {
+  const { categoriesMap } = useContext(CategoriesContext);
+  console.log(categoriesMap);
+
   const categories = [
     {
       id: 1,

@@ -1,15 +1,19 @@
+import { Link } from "react-router-dom";
 import "./DirectoryItem.scss";
 
 const DirectoryItem = (props) => {
   const { title, id, imageUrl } = props.category;
   return (
     <div key={id} className="DirectoryItem-container">
-      <div
-        className="background-image"
-        style={{
-          backgroundImage: `url(${imageUrl})`,
-        }}
-      ></div>
+      <Link className="directory-link" to={`shop/${title}`}>
+        <div
+          className="background-image"
+          style={{
+            backgroundImage: `url(${imageUrl})`,
+          }}
+        ></div>
+      </Link>
+
       <div className="category-body-container">
         <h2>{title}</h2>
         <p>Shop Now</p>
