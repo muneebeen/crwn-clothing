@@ -1,9 +1,9 @@
-import "./Category.scss";
+import "./DirectoryItem.scss";
 
-const Category = (props) => {
+const DirectoryItem = (props) => {
   const { title, id, imageUrl } = props.category;
   return (
-    <div key={id} className="category-container">
+    <div key={id} className="DirectoryItem-container">
       <div
         className="background-image"
         style={{
@@ -17,4 +17,4 @@ const Category = (props) => {
     </div>
   );
 };
-export default Category;
+export default DirectoryItem;

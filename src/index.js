@@ -2,11 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { UserProvider } from "./Context/UserContext";
+import { CategoryContextProvider } from "./Context/CategoriesContext";
+import { CartContextProvider } from "./Context/CartContext";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <UserProvider>
+        <CategoryContextProvider>
+          <CartContextProvider>
+            <App />
+          </CartContextProvider>
+        </CategoryContextProvider>
+      </UserProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
