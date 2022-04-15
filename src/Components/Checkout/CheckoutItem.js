@@ -1,13 +1,23 @@
 import "./CheckoutItem.scss";
-import { useContext } from "react";
-import { CartContext } from "../../Context/CartContext";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCartItems } from "../../store/Cart/CartSelector";
+import {
+  addItemsToCart,
+  clearItemFromCart,
+  removeItemFromCart,
+} from "../../store/Cart/CartAction";
 
 const CheckoutItem = ({ cartItem }) => {
-  const { clearItemFromCart, addItemsToCart, removeItemFromCart } =
-    useContext(CartContext);
+  const dispatch = useDispatch();
+
   const { name, price, imageUrl, quantity } = cartItem;
-  const addItemHandler = () => addItemsToCart(cartItem);
-  const removeItemHandler = () => removeItemFromCart(cartItem);
+
+  const cartItems = useSelector(selectCartItems);
+
+  const addItemHandler = () => dispatch(addItemsToCart(cartItems, cartItem));
+  const removeItemHandler = () =>
+    dispatch(removeItemFromCart(cartItems, cartItem));
+
   return (
     <div className="checkout-item-container">
       <div className="image-container">
@@ -27,7 +37,7 @@ const CheckoutItem = ({ cartItem }) => {
       <span className="price">{price}</span>
       <div
         className="remove-button"
-        onClick={() => clearItemFromCart(cartItem)}
+        onClick={() => dispatch(clearItemFromCart(cartItems, cartItem))}
       >
         &#10005;
       </div>

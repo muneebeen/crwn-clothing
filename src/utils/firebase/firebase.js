@@ -85,7 +85,7 @@ export const getCategoriesAndDocuments = async () => {
 
 // creating user collection and document in data in user does not exists already.
 export const createUserDocumentfromAuth = async (userauth, additionalInfo) => {
-  console.log("I am about to create db document");
+  console.log("I am about to create user document");
   const userDocRef = doc(db, "user", userauth.uid);
 
   const userSnapshot = await getDoc(userDocRef);

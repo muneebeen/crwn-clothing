@@ -3,9 +3,12 @@ import { CategoriesContext } from "../../Context/CategoriesContext";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import "./CategoriesPreview.scss";
 import { Link } from "react-router-dom";
+import { selectCategoryMap } from "../../store/Categories/CategorySelector";
+import { useSelector } from "react-redux";
 
 const CategoriesPreview = () => {
-  const { categoriesMap } = useContext(CategoriesContext);
+  // const { categoriesMap } = useContext(CategoriesContext);
+  const categoriesMap = useSelector(selectCategoryMap);
   return (
     <div className="product-section">
       {Object.keys(categoriesMap).map((title) => (
